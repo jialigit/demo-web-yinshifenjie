@@ -36,6 +36,9 @@ public class DemoWebYinshifenjieApplication {
 		}
 
 		list.add(new Integer(num));
+		
+		
+		
 		return list;
 	}
 }
@@ -78,7 +81,7 @@ class Prime {
 		for (int i = 0; i < prime.length; i++) {
 			System.out.print(prime[i] + " ");
 		}
-
+//
 		System.out.println();
 	}
 }
