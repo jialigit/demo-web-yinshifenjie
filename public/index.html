@@ -7,7 +7,9 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>Insert title here</title>
-<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
 <style>
 </style>
 </head>
@@ -16,19 +18,19 @@
 
 
 		<div id="header">
-			<h1>yinshifenjie</h1>
+			<h1>因式分解</h1>
 		</div>
 
 
 		<div id="content">
 			<div class="params">
-				<label>input one int greater than 0:</label><input type="text"
+				<label>请输入大于 1的整数:</label><input type="text"
 					id="num" />
 			</div>
 
 
 			<div>
-				<button class="btn btn-primary" id="go">go</button>
+				<button class="btn btn-primary" id="go">计算</button>
 
 			</div>
 
@@ -47,22 +49,41 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	$(function() {
 		$("#go").click(function() {
 			var num = $("#num").val();
-			$.get("/divide", {
-				num : num
-			}, function(data) {
-				if (data) {
-					console.log(data);
-					$("#res").text(JSON.stringify(data));
-				} else {
-					alert("data is null")
+			if(num != "" && num%1 === 0 && num >1){
+				//-------
+					$.get("/divide", {
+						num : num
+					}, function(data) {
+							if (data) {
+								console.log(data);
+								if(data.code == 0){
+									$("#res").text(JSON.stringify(data.data));
+								}else{
+									alert("error in system, please ask administer");
+								}
+							} else {
+								alert("error in system, please ask administer")
+							}
+						}
+					);
+				//-----------
+				}else{
+					alert("error, input invalid")
 				}
-			});
-		});
+			}
+			
+			);
+		
+		
+		
+		
+			
 
 	});
 </script>
