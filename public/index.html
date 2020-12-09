@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Insert title here</title>
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<style>
+</style>
+</head>
+<body>
+	<div class="container">
+
+
+		<div id="header">
+			<h1>yinshifenjie</h1>
+		</div>
+
+
+		<div id="content">
+			<div class="params">
+				<label>input one int greater than 0:</label><input type="text"
+					id="num" />
+			</div>
+
+
+			<div>
+				<button class="btn btn-primary" id="go">go</button>
+
+			</div>
+
+			<div id="res"></div>
+
+
+
+		</div>
+	</div>
+</body>
+<!-- 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script> -->
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$("#go").click(function() {
+			var num = $("#num").val();
+			$.get("/divide", {
+				num : num
+			}, function(data) {
+				if (data) {
+					console.log(data);
+					$("#res").text(JSON.stringify(data));
+				} else {
+					alert("data is null")
+				}
+			});
+		});
+
+	});
+</script>
+</html>
